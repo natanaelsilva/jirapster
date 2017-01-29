@@ -22,5 +22,7 @@
 
     <cache alias="br.com.javaprodutivo.jirapster.social.SocialUserConnection" uses-template="simple"/>
 
+    <cache alias="br.com.javaprodutivo.jirapster.domain.Projeto" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>
