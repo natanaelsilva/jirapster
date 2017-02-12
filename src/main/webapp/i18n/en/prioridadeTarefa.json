@@ -1,0 +1,10 @@
+{
+    "jirapsterApp": {
+        "PrioridadeTarefa" : {
+            "null": "",
+            "Baixa": "Baixa",
+            "Normal": "Normal",
+            "Alta": "Alta"
+        }
+    }
+}

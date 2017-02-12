@@ -1,0 +1,11 @@
+{
+    "jirapsterApp": {
+        "StatusTarefa" : {
+            "null": "",
+            "Backlog": "Backlog",
+            "Fazendo": "Fazendo",
+            "Feito": "Feito",
+            "Cancelada": "Cancelada"
+        }
+    }
+}
