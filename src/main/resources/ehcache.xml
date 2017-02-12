@@ -24,5 +24,7 @@
 
     <cache alias="br.com.javaprodutivo.jirapster.domain.Projeto" uses-template="simple"/>
 
+    <cache alias="br.com.javaprodutivo.jirapster.domain.Tarefa" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

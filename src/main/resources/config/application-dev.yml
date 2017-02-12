@@ -27,7 +27,7 @@ spring:
         url: jdbc:mysql://localhost:3306/jirapster?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
         username: root
-        password:
+        password: 1q2w3e4r
         hikari:
             data-source-properties:
                 cachePrepStmts: true

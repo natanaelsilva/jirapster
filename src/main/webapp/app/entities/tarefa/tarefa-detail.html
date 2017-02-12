@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span data-translate="jirapsterApp.tarefa.detail.title">Tarefa</span> {{vm.tarefa.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="jirapsterApp.tarefa.titulo">Titulo</span></dt>
+        <dd>
+            <span>{{vm.tarefa.titulo}}</span>
+        </dd>
+        <dt><span data-translate="jirapsterApp.tarefa.descricao">Descricao</span></dt>
+        <dd>
+            <span>{{vm.tarefa.descricao}}</span>
+        </dd>
+        <dt><span data-translate="jirapsterApp.tarefa.prioridade">Prioridade</span></dt>
+        <dd>
+            <span data-translate="{{'jirapsterApp.PrioridadeTarefa.' + vm.tarefa.prioridade}}">{{vm.tarefa.prioridade}}</span>
+        </dd>
+        <dt><span data-translate="jirapsterApp.tarefa.status">Status</span></dt>
+        <dd>
+            <span data-translate="{{'jirapsterApp.StatusTarefa.' + vm.tarefa.status}}">{{vm.tarefa.status}}</span>
+        </dd>
+        <dt><span data-translate="jirapsterApp.tarefa.dataCriacao">Data Criacao</span></dt>
+        <dd>
+            <span>{{vm.tarefa.dataCriacao | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="jirapsterApp.tarefa.usuarioReq">Usuario Req</span></dt>
+        <dd>
+            {{vm.tarefa.usuarioReq.login}}
+        </dd>
+        <dt><span data-translate="jirapsterApp.tarefa.usuarioDev">Usuario Dev</span></dt>
+        <dd>
+            {{vm.tarefa.usuarioDev.login}}
+        </dd>
+        <dt><span data-translate="jirapsterApp.tarefa.projeto">Projeto</span></dt>
+        <dd>
+            <a ui-sref="projeto-detail({id:vm.tarefa.projeto.id})">{{vm.tarefa.projeto.nome}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="tarefa-detail.edit({id:vm.tarefa.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

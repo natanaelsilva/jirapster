@@ -1,0 +1,147 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myTarefaLabel" data-translate="jirapsterApp.tarefa.home.createOrEditLabel">Create or edit a Tarefa</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.tarefa.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.tarefa.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jirapsterApp.tarefa.titulo" for="field_titulo">Titulo</label>
+            <input type="text" class="form-control" name="titulo" id="field_titulo"
+                    ng-model="vm.tarefa.titulo"
+                    required ng-minlength="10" ng-maxlength="100" />
+            <div ng-show="editForm.titulo.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.titulo.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.titulo.$error.minlength" data-translate="entity.validation.minlength" translate-value-min="10">
+                    This field is required to be at least 10 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.titulo.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="100">
+                    This field cannot be longer than 100 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jirapsterApp.tarefa.descricao" for="field_descricao">Descricao</label>
+            <input type="text" class="form-control" name="descricao" id="field_descricao"
+                    ng-model="vm.tarefa.descricao"
+                    required ng-minlength="100" ng-maxlength="255" />
+            <div ng-show="editForm.descricao.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.descricao.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.descricao.$error.minlength" data-translate="entity.validation.minlength" translate-value-min="100">
+                    This field is required to be at least 100 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.descricao.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jirapsterApp.tarefa.prioridade" for="field_prioridade">Prioridade</label>
+            <select class="form-control" name="prioridade" ng-model="vm.tarefa.prioridade" id="field_prioridade" required>
+                <option value="Baixa" data-translate="jirapsterApp.PrioridadeTarefa.Baixa">Baixa</option>
+                <option value="Normal" data-translate="jirapsterApp.PrioridadeTarefa.Normal">Normal</option>
+                <option value="Alta" data-translate="jirapsterApp.PrioridadeTarefa.Alta">Alta</option>
+            </select>
+            <div ng-show="editForm.prioridade.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.prioridade.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jirapsterApp.tarefa.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.tarefa.status" id="field_status" required>
+                <option value="Backlog" data-translate="jirapsterApp.StatusTarefa.Backlog">Backlog</option>
+                <option value="Fazendo" data-translate="jirapsterApp.StatusTarefa.Fazendo">Fazendo</option>
+                <option value="Feito" data-translate="jirapsterApp.StatusTarefa.Feito">Feito</option>
+                <option value="Cancelada" data-translate="jirapsterApp.StatusTarefa.Cancelada">Cancelada</option>
+            </select>
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jirapsterApp.tarefa.dataCriacao" for="field_dataCriacao">Data Criacao</label>
+                <div class="input-group">
+                    <input id="field_dataCriacao" type="text" class="form-control" name="dataCriacao" uib-datepicker-popup="{{dateformat}}" ng-model="vm.tarefa.dataCriacao" is-open="vm.datePickerOpenStatus.dataCriacao"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dataCriacao')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.dataCriacao.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dataCriacao.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="jirapsterApp.tarefa.usuarioReq" for="field_usuarioReq">Usuario Req</label>
+            <select class="form-control" id="field_usuarioReq" name="usuarioReq" ng-model="vm.tarefa.usuarioReq" ng-options="user as user.login for user in vm.users track by user.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.usuarioReq.$invalid">
+            <p class="help-block"
+                ng-show="editForm.usuarioReq.$error.required" data-translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+        <div class="form-group">
+            <label data-translate="jirapsterApp.tarefa.usuarioDev" for="field_usuarioDev">Usuario Dev</label>
+            <select class="form-control" id="field_usuarioDev" name="usuarioDev" ng-model="vm.tarefa.usuarioDev" ng-options="user as user.login for user in vm.users track by user.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.usuarioDev.$invalid">
+            <p class="help-block"
+                ng-show="editForm.usuarioDev.$error.required" data-translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+        <div class="form-group">
+            <label data-translate="jirapsterApp.tarefa.projeto" for="field_projeto">Projeto</label>
+            <select class="form-control" id="field_projeto" name="projeto" ng-model="vm.tarefa.projeto" ng-options="projeto as projeto.nome for projeto in vm.projetos track by projeto.id" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.projeto.$invalid">
+            <p class="help-block"
+                ng-show="editForm.projeto.$error.required" data-translate="entity.validation.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
