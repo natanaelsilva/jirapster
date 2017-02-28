@@ -14,63 +14,42 @@
         </div>
     </div>
     <br/>
-    <div class="table-responsive">
-        <table class="jh-table table table-striped">
-            <thead>
-                <tr>
-                    <th><span data-translate="global.field.id">ID</span></th>
-                    <th><span data-translate="jirapsterApp.tarefa.titulo">Titulo</span></th>
-                    <th><span data-translate="jirapsterApp.tarefa.descricao">Descricao</span></th>
-                    <th><span data-translate="jirapsterApp.tarefa.prioridade">Prioridade</span></th>
-                    <th><span data-translate="jirapsterApp.tarefa.status">Status</span></th>
-                    <th><span data-translate="jirapsterApp.tarefa.dataCriacao">Data Criacao</span></th>
-                    <th><span data-translate="jirapsterApp.tarefa.usuarioReq">Usuario Req</span></th>
-                    <th><span data-translate="jirapsterApp.tarefa.usuarioDev">Usuario Dev</span></th>
-                    <th><span data-translate="jirapsterApp.tarefa.projeto">Projeto</span></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="tarefa in vm.tarefas track by tarefa.id">
-                    <td><a ui-sref="tarefa-detail({id:tarefa.id})">{{tarefa.id}}</a></td>
-                    <td>{{tarefa.titulo}}</td>
-                    <td>{{tarefa.descricao}}</td>
-                    <td data-translate="{{'jirapsterApp.PrioridadeTarefa.' + tarefa.prioridade}}">{{tarefa.prioridade}}</td>
-                    <td data-translate="{{'jirapsterApp.StatusTarefa.' + tarefa.status}}">{{tarefa.status}}</td>
-                        <td>{{tarefa.dataCriacao | date:'mediumDate'}}</td>
-                    <td>
-                        {{tarefa.usuarioReq.login}}
-                    </td>
-                    <td>
-                        {{tarefa.usuarioDev.login}}
-                    </td>
-                    <td>
-                        <a ui-sref="projeto-detail({id:tarefa.projeto.id})">{{tarefa.projeto.nome}}</a>
-                    </td>
-                    <td class="text-right">
-                        <div class="btn-group flex-btn-group-container">
-                            <button type="submit"
-                                    ui-sref="tarefa-detail({id:tarefa.id})"
-                                    class="btn btn-info btn-sm">
-                                <span class="glyphicon glyphicon-eye-open"></span>
-                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="tarefa.edit({id:tarefa.id})"
-                                    class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="tarefa.delete({id:tarefa.id})"
-                                    class="btn btn-danger btn-sm">
-                                <span class="glyphicon glyphicon-remove-circle"></span>
-                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row">
+        <div class="col-md-3">
+            <p>Backlog</p>
+            <div ng-repeat="tarefa in vm.tarefas track by tarefa.id">
+                <a href="#" ng-if="tarefa.status=='Backlog'"
+                   ui-sref="tarefa.edit({id:tarefa.id})">
+                    #{{tarefa.id}} - {{tarefa.titulo}}
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <p>Fazendo</p>
+            <div ng-repeat="tarefa in vm.tarefas track by tarefa.id">
+                <a href="#" ng-if="tarefa.status=='Fazendo'"
+                   ui-sref="tarefa.edit({id:tarefa.id})">
+                    #{{tarefa.id}} - {{tarefa.titulo}}
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <p>Feito</p>
+            <div ng-repeat="tarefa in vm.tarefas track by tarefa.id">
+                <a href="#" ng-if="tarefa.status=='Feito'"
+                   ui-sref="tarefa.edit({id:tarefa.id})">
+                    #{{tarefa.id}} - {{tarefa.titulo}}
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <p>Cancelada</p>
+            <div ng-repeat="tarefa in vm.tarefas track by tarefa.id">
+                <a href="#" ng-if="tarefa.status=='Cancelar'"
+                   ui-sref="tarefa.edit({id:tarefa.id})">
+                    #{{tarefa.id}} - {{tarefa.titulo}}
+                </a>
+            </div>
+        </div>
     </div>
 </div>
